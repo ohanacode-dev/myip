@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ohana Code</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <meta name="description" content="Ohana Code, a software development company. IP log service.">
+        <meta name="author" content="Rada Berar">
+    </head>
+    <body>
+        <div class="container">
+            <div id="container-1">
+                <h1>Ohana Code IP Service</h1>
+                <div id="logo">
+                    <img src="{{ url_for('static', filename='OCLogo.png') }}" alt="Logo">
+                </div>
+            </div>
+
+            <div id="container-2">
+                <h2>Purpose of this service</h2>
+                <p>
+                    Sometimes I build various devices that I need to access remotely.
+                    For this I need to know the IP address of a device.
+                    This is a service to provide a simple way to keep track of devices IP address and <b><u>it is free for anyone to use.</u></b>
+                    It is like a Dynamic DNS service, but you can host this anywhere, even within your local network.<br><br>
+                    I do not employ a domain name registrar, nor do I provide a hosting service,
+                    so I can not provide you with an domain that your devices would use directly, but just a text based record of an updated IP address.<br><br>
+                </p>
+
+                <h2>How it works</h2>
+                <p>
+                    To keep things simple, there is no login, no registration.
+                    Every device using this service must have it's own unique id. We will refer to this as [device_id].
+                    You can generate the id yourself. Choose any set of characters.
+                    I am using a <a href="https://www.ssh.com/ssh/public-key-authentication">private ssh key</a>,
+                    but you can use anything else you are sure is unique.<br><br>
+                    On the device whose IP address you wish to keep track of make an <b>http get request</b> (or manually using your web browser) to:<br><br>
+                    https://myip.ohanacode-dev.com/set/<b>[device_id]</b><br><br>
+                    On your computer, from which you wish to find devices IP address, open a web browser and go to:<br><br>
+                    https://myip.ohanacode-dev.com/get/<b>[device_id]</b><br><br>
+                    This will return just your devices IP address. If your device provides a web server and you need a page to bookmark, you can use:
+                    https://myip.ohanacode-dev.com/redirect/<b>[device_id]</b><br><br>
+                </p>
+
+                <h2>Opensource and free</h2>
+                <p>
+                    If you wish to host this service on your own network, go to the <a href="https://github.com/ohanacode-dev/myip">github page</a> and follow the instructions.
+                </p>
+            </div>
+
+            <div id="container-footer">
+                <a href="mailto:office@ohanacode-dev.com">office@ohanacode-dev.com</a>
+                <p>Veselina Masleše 120, 21113 Novi Sad, Serbia</p>
+            </div>
+        </div>
+    </body>
+</html>
