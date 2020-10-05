@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ohana Code</title>
+        <title>Ohana Code IP service</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
         <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,14 +36,16 @@
                     You can generate the id yourself. Choose any set of characters.
                     I am using a <a href="https://www.ssh.com/ssh/public-key-authentication">private ssh key</a>,
                     but you can use anything else you are sure is unique.<br><br>
-                    On the device whose IP address you wish to keep track of make an <b>http get request</b> (or manually using your web browser) to:<br><br>
-                    &nbsp &nbsp https://myip.ohanacode-dev.com/set/<b>[device_id]</b><br><br>
-                    On your computer, from which you wish to find devices IP address, open a web browser and go to:<br><br>
-                    &nbsp &nbsp https://myip.ohanacode-dev.com/get/<b>[device_id]</b><br><br>
-                    This will return just your devices IP address. If your device provides a web server and you need a page to bookmark, you can use:<br><br>
-                    &nbsp &nbsp https://myip.ohanacode-dev.com/redirect/<b>[device_id]</b><br><br>
-                    This will provide a page redirecting to your devices IP address.
+                    On the device whose IP address you wish to keep track of make an <b>http get request</b> (or manually using your web browser) to:
                 </p>
+                <div class="code">https://myip.ohanacode-dev.com/set/<b>[device_id]</b></div>
+                <p>On your computer, from which you wish to find devices IP address, open a web browser and go to:</p>
+                <div class="code">https://myip.ohanacode-dev.com/get/<b>[device_id]</b></div><br>
+                <p>This will return just your devices IP address. If your device provides a web server and you need a page to bookmark, you can use:</p>
+                <div class="code">http://myip.ohanacode-dev.com/redirect_http/<b>[device_id]</b></div>
+                <p>or using https if your device supports it:</p>
+                <div class="code">https://myip.ohanacode-dev.com/redirect_https/<b>[device_id]</b></div>
+                <p>This will provide a page redirecting to your devices IP address.</p><br>
 
                 <h2>Opensource and free</h2>
                 <p>

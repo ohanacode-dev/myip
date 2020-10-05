@@ -39,7 +39,7 @@ def set_ip(dev_id, ip_addr):
                     if str(e).startswith('no such table'):
                         # Create the table
                         create_db()
-                        result = "Table created. Try again."
+                        result = "Initial database created. Try again."
                     else:
                         print(e)
 
@@ -60,7 +60,7 @@ def get_ip(dev_id):
                     if str(e).startswith('no such table'):
                         # Create the table
                         create_db()
-                        result = "Table created. Try again."
+                        result = "Initial database created. Try again."
                     else:
                         print(e)
 
@@ -108,6 +108,34 @@ def get_ip_dev(id):
     response = make_response("{}".format(result), 200)
     response.mimetype = "text/plain"
     return response
+
+
+@application.route('/redirect_http/<id>', methods=['GET'])
+def redirect_http(id):
+    result = get_ip(id)
+
+    if result is not None and len(result) < 17:
+        # Result is not a database created message, but an actual IP address. Show a redirect page.
+        dev_url = 'http://{}'.format(result)
+        return render_template('redirect.html', dev_ip=result, dev_url=dev_url)
+    else:
+        response = make_response("{}".format(result), 200)
+        response.mimetype = "text/plain"
+        return response
+
+
+@application.route('/redirect_https/<id>', methods=['GET'])
+def redirect_https(id):
+    result = get_ip(id)
+
+    if result is not None and len(result) < 17:
+        # Result is not a database created message, but an actual IP address. Show a redirect page.
+        dev_url = 'https://{}'.format(result)
+        return render_template('redirect.html', dev_ip=result, dev_url=dev_url)
+    else:
+        response = make_response("{}".format(result), 200)
+        response.mimetype = "text/plain"
+        return response
 
 
 if __name__ == '__main__':

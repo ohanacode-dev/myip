@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ohana Code IP service redirect</title>
+        <meta name="description" content="IP log service redirecting...">
+        <meta name="author" content="Rada Berar">
+    </head>
+    <body>
+        <h1>Redirecting</h1>
+        <p>to {{ dev_ip }} in <span id="counter">4</span>s</p>
+
+        <script>
+            // Update the count down every 1 second
+            var seconds = 4;
+
+            var x = setInterval(function() {
+                seconds -= 1;
+                document.getElementById("counter").innerHTML = seconds;
+
+                if (seconds < 0) {
+                    window.location.replace("{{ dev_url }}");
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>
