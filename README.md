@@ -58,8 +58,11 @@ This will not alter the IP address recorded for the device ID, only the title, s
 requested from any other IP address.
 
 ## Running the service
-This is a Python Flask based application, so install Flask and run the py file 
-using Python3. Take a look at the start of the file for basic parameters. 
+This is a Python Flask based application, so install Flask and run:
+ 
+    Python3 application.py  
+
+Take a look at the start of the file for basic parameters. 
 
 ## Licence
 You are free to do with this code as you like, but I would appreciate it if you mention me somewhere.

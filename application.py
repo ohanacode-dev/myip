@@ -42,7 +42,10 @@ def set_ip(dev_id, ip_addr):
 
                     if not spam_detected:
                         id_row = cursor.execute('SELECT * FROM {} WHERE id = "{}"'.format(DB_NAME, dev_id)).fetchone()
-                        title = id_row[4]
+                        if id_row is not None and len(id_row) > 0:
+                            title = id_row[4]
+                        else:
+                            title = ''
 
                         # Delete all records with this IP
                         cursor.execute("DELETE FROM {} WHERE ip = ?".format(DB_NAME), (ip_addr,))
