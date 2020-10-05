@@ -20,27 +20,47 @@ To keep things simple, there is no login, no registration.
 Every device using this service must have it's own unique id. 
 We will refer to this as [device_id]. You can generate the id yourself. 
 Choose any set of characters. I am using a private ssh key, 
-but you can use anything else you are sure is unique.
+but you can use anything else you are sure is unique. 
+Lets refer to the address of the computer running this service as [server_url]. 
 
 On the device whose IP address you wish to keep track of make an http get request 
 (or manually using your web browser) to:
 
-    https://myip.ohanacode-dev.com/set/[device_id]
+    [server_url]/set/[device_id]
 
 On your computer, from which you wish to find devices IP address, 
 open a web browser and go to:
 
-    https://myip.ohanacode-dev.com/get/[device_id]
+    [server_url]/get/[device_id]
 
 This will return just your devices IP address. If your device provides a web server 
 and you need a page to bookmark, you can use:
 
-    https://myip.ohanacode-dev.com/redirect/[device_id]
+    [server_url]/redirect/[device_id]
 
 This will provide a page redirecting to your devices IP address.
 
-# Running the service
+##Administration
+Here are a few more things you need to know.
+This solution uses an SQLITE database to record all the IP addresses, device ID's and timestamps.
+There is also a TITLE field. If you look at the start of the python file, you will find a variable 
+called ADMIN_ID. Change the value to anything you like. Lets refer to it as [admin_pass].
+If you now go to:
 
+    [server_url]/get/[admin_pass]
+    
+You will get a list of all recorded IP addresses with device ID, timestamp and title. 
+At this point the title is not set. To set the title of each device, you can go to:
+
+    [server_url]/title/[device_id]/[some_html_safe_device_title]
+    
+This will not alter the IP address recorded for the device ID, only the title, so it can be 
+requested from any other IP address.
+
+## Running the service
 This is a Python Flask based application, so install Flask and run the py file 
-using Python3. Take a look at the end of the python file for hint on selecting 
-parameters for local or external server hosting. 
+using Python3. Take a look at the start of the file for basic parameters. 
+
+## Licence
+You are free to do with this code as you like, but I would appreciate it if you mention me somewhere.
+
