@@ -47,6 +47,22 @@
                 <div class="code">https://myip.ohanacode-dev.com/redirect_https/<b>[device_id]</b></div>
                 <p>This will provide a page redirecting to your devices IP address.</p><br>
 
+                <h2>Making the request</h2>
+                <p>Simplest way to make a get request is to use the url in a browser.</p>
+                <p>It can be done via linux terminal using wget:</p>
+                <div class="code">wget -q --spider [url]</div>
+                <p>or curl:</p>
+                <div class="code">curl [url]</div>
+                <p>Also using Python:</p>
+                <div class="code">
+                    <p>import urllib.request</p>
+                    <p>device_id = 'my_device_id_1234'</p>
+                    <p>url = 'https://myip.ohanacode-dev.com/set/' + device_id</p>
+                    <p>response = urllib.request.urlopen(url)</p>
+                    <p>print(response.read())</p>
+                </div>
+                <br>
+
                 <h2>Opensource and free</h2>
                 <p>
                     If you wish to host this service on your own network, go to the <a href="https://github.com/ohanacode-dev/myip">github page</a> and follow the instructions.
