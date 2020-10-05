@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ohana Code IP service redirect</title>
+        <meta name="description" content="IP log service listing">
+        <meta name="author" content="Rada Berar">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>IP</th>
+                <th>ID</th>
+                <th>time</th>
+                <th>title</th>
+            </tr>
+
+            {%for i in range(0, len)%}
+                <tr>
+                    <th>{{ table[i][0] }}</th>
+                    <th>{{ table[i][1] }}</th>
+                    <th>{{ table[i][2] }}</th>
+                    <th>{{ table[i][3] }}</th>
+                    <th>{{ table[i][4] }}</th>
+                </tr>
+            {%endfor%}
+        </table>
+    </body>
+</html>
